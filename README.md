@@ -1,2 +1,2 @@
-# Poros-Kotlin-Retrofit
-Sample project for education to using Retrofit and RxJava with Kotlin Language
+# Jadwal Ujian FILKOM
+Aplikasi sederhana untuk mendapatkan jadwal ujian di FILKOM sesuai mata kuliah yang diambil.
