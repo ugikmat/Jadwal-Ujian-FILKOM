@@ -1,4 +1,4 @@
-package com.example.lutluthfi.poroskotlinretrofit.model
+package com.example.lutluthfi.jadwalujianfilkom.model
 
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose

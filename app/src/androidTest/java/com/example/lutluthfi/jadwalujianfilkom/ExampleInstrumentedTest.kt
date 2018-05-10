@@ -1,4 +1,4 @@
-package com.example.lutluthfi.poroskotlinretrofit
+package com.example.lutluthfi.jadwalujianfilkom
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

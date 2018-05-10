@@ -1,4 +1,4 @@
-package com.example.lutluthfi.poroskotlinretrofit.network
+package com.example.lutluthfi.jadwalujianfilkom.network
 
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -11,15 +11,21 @@ class ApiClient {
     companion object {
         private var mRetrofit: Retrofit? = null
 
-        fun create(): ApiHelper {
+        fun create(api: String): ApiHelper {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val rxAdapter = RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io())
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
             if (mRetrofit == null) {
-                mRetrofit = Retrofit.Builder().baseUrl("http://belajaryuk.viralio.media/")
-                        .client(client).addConverterFactory(GsonConverterFactory.create())
-                        .addCallAdapterFactory(rxAdapter).build()
+                if (api.equals("jadwal")) {
+                    mRetrofit = Retrofit.Builder().baseUrl("https://raw.githubusercontent.com/asamsulfat/nyamuk-book/master/")
+                            .client(client).addConverterFactory(GsonConverterFactory.create())
+                            .addCallAdapterFactory(rxAdapter).build()
+                } else {
+                    mRetrofit = Retrofit.Builder().baseUrl("https://siam.ub.ac.id/")
+                            .client(client).addConverterFactory(GsonConverterFactory.create())
+                            .addCallAdapterFactory(rxAdapter).build()
+                }
             }
             return mRetrofit!!.create(ApiHelper::class.java)
         }
