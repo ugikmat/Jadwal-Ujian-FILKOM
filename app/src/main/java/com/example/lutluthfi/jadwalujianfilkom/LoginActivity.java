@@ -258,8 +258,10 @@ public class LoginActivity extends AppCompatActivity  {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "siam fail", Toast.LENGTH_SHORT).show();
                 disableProgressBar();
             }
+            
         });
     }
 }
