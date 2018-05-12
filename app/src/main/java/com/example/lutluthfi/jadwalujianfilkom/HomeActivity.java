@@ -1,6 +1,7 @@
 package com.example.lutluthfi.jadwalujianfilkom;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -27,6 +28,10 @@ public class HomeActivity extends AppCompatActivity {
     public static final String TAG = "hmm";
     private ArrayList<DetailJadwal> jadwals;
     static String ruangan = "";
+    static String prodi = "";
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class HomeActivity extends AppCompatActivity {
         Bundle args = intent.getBundleExtra("BUNDLE");
         jadwals = (ArrayList<DetailJadwal>) args.getSerializable("ARRAYLIST");
 
+        sharedPreferences = getSharedPreferences("account", MODE_PRIVATE);
+        prodi = sharedPreferences.getString("prodi", "");
 
         for (int i = 0; i < jadwals.size(); i++) {
             //Log.d(TAG+"home", "onCreate: "+jadwals.get(i).getMatkul());
@@ -67,6 +74,11 @@ public class HomeActivity extends AppCompatActivity {
 //                            //Log.d(TAG, "onResponse: ==============================");
 //                            //Log.d(TAG, "JA Ruangan: "+cell.get(i).getContent());
                         }
+                        switch (prodi) {
+                            case "Teknik Informatika":
+                                prodi = "TIF";
+                                break;
+                        }
                         switch (cell.get(i).getJ().toString()) {
                             default:
                                 //ruangan = cell.get(i).getContent();
@@ -75,7 +87,9 @@ public class HomeActivity extends AppCompatActivity {
 //                                break;
                             case "3":
                                 for (int j = 0; j < jadwals.size(); j++) {
-                                    if (jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
+                                    if (
+                                            prodi.equals(cell.get(i-1).getContent().trim()) &&
+                                            jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
                                             jadwals.get(j).getKelas().trim().equals(cell.get(i+1).getContent().trim())) {
                                         Log.d(TAG, "JA Ruangan: "+ruangan);
                                         Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
@@ -102,7 +116,9 @@ public class HomeActivity extends AppCompatActivity {
 //                                    Log.d(TAG, "onResponse: ------------------------------");
 
                                 for (int j = 0; j < jadwals.size(); j++) {
-                                    if (jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
+                                    if (
+                                            prodi.equals(cell.get(i-1).getContent().trim()) &&
+                                            jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
                                             jadwals.get(j).getKelas().trim().equals(cell.get(i+1).getContent().trim())) {
                                         Log.d(TAG, "JA Ruangan: "+ruangan);
                                         Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
@@ -121,7 +137,9 @@ public class HomeActivity extends AppCompatActivity {
                             case "9":
                                 //Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
                                 for (int j = 0; j < jadwals.size(); j++) {
-                                    if (jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
+                                    if (
+                                            prodi.equals(cell.get(i-1).getContent().trim()) &&
+                                            jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
                                             jadwals.get(j).getKelas().trim().equals(cell.get(i+1).getContent().trim())) {
                                         Log.d(TAG, "JA Ruangan: "+ruangan);
                                         Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());

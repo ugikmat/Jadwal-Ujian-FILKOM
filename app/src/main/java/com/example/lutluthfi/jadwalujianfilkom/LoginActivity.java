@@ -130,11 +130,11 @@ public class LoginActivity extends AppCompatActivity  {
                 // get jadwal with authenticated token
                 String resp = response.body();
                 List<String> items = Arrays.asList(resp.split("<div><span class=\"label\">Program Studi<i class=\"fa fa-angle-right\"></i></span>"));
-                List<String> Prodi = Arrays.asList(items.get(1).split("</div>"));
-                Log.d("zxcresp", "onResponse: "+Prodi.get(0));
-                for (int i = 0; i < items.size(); i++) {
-                }
-                //jadwal();
+                List<String> prodi = Arrays.asList(items.get(1).split("</div>"));
+                Log.d("zxcresp", "onResponse: "+prodi.get(0));
+                editor.putString("prodi", prodi.get(0));
+                editor.apply();
+                jadwal();
             }
 
             @Override
