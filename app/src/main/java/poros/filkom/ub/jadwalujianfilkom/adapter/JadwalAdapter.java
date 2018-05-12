@@ -51,7 +51,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.ViewHolder
         holder.btnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Detail jadwal", Toast.LENGTH_SHORT).show();
             }
         });
     }
