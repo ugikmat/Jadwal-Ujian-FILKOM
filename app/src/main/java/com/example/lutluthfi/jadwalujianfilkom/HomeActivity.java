@@ -27,6 +27,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public static final String TAG = "hmm";
     private ArrayList<DetailJadwal> jadwals;
+    private static ArrayList<DetailJadwal> jadwalKu =  new ArrayList<>();
+    private String[] daftarHari = {"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Senin", "Rabu", "Kamis"};
     static String ruangan = "";
     static String prodi = "";
 
@@ -51,9 +53,21 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         getJadwal();
+
     }
 
-    public void getJadwal() {
+    private void getJadwalKu() {
+        for (int i = 0; i < jadwalKu.size(); i++) {
+            Log.d(TAG, "getJadwalKu: ==========================");
+            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getHari());
+            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getJam());
+            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getKelas());
+            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getMatkul());
+            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getRuang());
+        }
+    }
+
+    private void getJadwal() {
         Service service = ApiGenerator.createService(Service.class);
 
         Call<JadwalResponse> call = service.getJadwalUAS();
@@ -62,8 +76,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<JadwalResponse> call, Response<JadwalResponse> response) {
                 JadwalResponse jadwalResponse = response.body();
+                int ke = 0;
                 for (int h = 0; h < jadwalResponse.getPages().size(); h++) {
-                    Log.d(TAG, "Hari "+h+": ========================");
+                    //Log.d(TAG, "Hari "+h+": ========================");
                     for (int i = 1; i < jadwalResponse.getPages().get(h).getTables().get(0).getCells().size(); i++) {
                     ArrayList<Cell> cell = (ArrayList<Cell>) response.body().getPages().get(h).getTables().get(0).getCells();
                     if (cell.get(i).getI() <= 2) {
@@ -94,6 +109,14 @@ public class HomeActivity extends AppCompatActivity {
                                         Log.d(TAG, "JA Ruangan: "+ruangan);
                                         Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
                                         Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
+                                        DetailJadwal detailJadwal = new DetailJadwal();
+                                        detailJadwal.setHari(daftarHari[h]);
+                                        detailJadwal.setJam("pagi");
+                                        detailJadwal.setKelas(cell.get(i+1).getContent());
+                                        detailJadwal.setMatkul(cell.get(i).getContent());
+                                        detailJadwal.setRuang(ruangan);
+                                        jadwalKu.add(ke, detailJadwal);
+                                        ke++;
                                     }
                                 }
                                 break;
@@ -123,6 +146,14 @@ public class HomeActivity extends AppCompatActivity {
                                         Log.d(TAG, "JA Ruangan: "+ruangan);
                                         Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
                                         Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
+                                        DetailJadwal detailJadwal = new DetailJadwal();
+                                        detailJadwal.setHari(daftarHari[h]);
+                                        detailJadwal.setJam("siang");
+                                        detailJadwal.setKelas(cell.get(i+1).getContent());
+                                        detailJadwal.setMatkul(cell.get(i).getContent());
+                                        detailJadwal.setRuang(ruangan);
+                                        jadwalKu.add(ke, detailJadwal);
+                                        ke++;
                                     }
                                 }
                                 break;
@@ -144,6 +175,14 @@ public class HomeActivity extends AppCompatActivity {
                                         Log.d(TAG, "JA Ruangan: "+ruangan);
                                         Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
                                         Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
+                                        DetailJadwal detailJadwal = new DetailJadwal();
+                                        detailJadwal.setHari(daftarHari[h]);
+                                        detailJadwal.setJam("sore");
+                                        detailJadwal.setKelas(cell.get(i+1).getContent());
+                                        detailJadwal.setMatkul(cell.get(i).getContent());
+                                        detailJadwal.setRuang(ruangan);
+                                        jadwalKu.add(ke, detailJadwal);
+                                        ke++;
                                     }
                                 }
                                 break;
@@ -163,6 +202,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 }
 
+                getJadwalKu();
             }
 
             @Override
