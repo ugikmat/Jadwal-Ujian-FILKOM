@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoLink="web"
-        android:text="\nCheck source code di \nhttps://gitlab.com/UB_POROS/Mobile_Jadwal-Ujian-FILKOM\n" />
+        android:text="\nCheck source code di \nhttps://github.com/divisi-mobile-POROS/Jadwal-Ujian-FILKOM" />
 
     <ProgressBar
         android:id="@+id/progressBar"
