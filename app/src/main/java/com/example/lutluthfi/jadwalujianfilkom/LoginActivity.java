@@ -128,7 +128,13 @@ public class LoginActivity extends AppCompatActivity  {
             public void onResponse(Call<String> call, Response<String> response) {
                 // after token authenticated,
                 // get jadwal with authenticated token
-                jadwal();
+                String resp = response.body();
+                List<String> items = Arrays.asList(resp.split("<div><span class=\"label\">Program Studi<i class=\"fa fa-angle-right\"></i></span>"));
+                List<String> Prodi = Arrays.asList(items.get(1).split("</div>"));
+                Log.d("zxcresp", "onResponse: "+Prodi.get(0));
+                for (int i = 0; i < items.size(); i++) {
+                }
+                //jadwal();
             }
 
             @Override
