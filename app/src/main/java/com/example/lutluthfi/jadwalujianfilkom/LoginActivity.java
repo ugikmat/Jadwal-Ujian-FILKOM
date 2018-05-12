@@ -119,8 +119,8 @@ public class LoginActivity extends AppCompatActivity  {
 
         Call<String> call = service.login(
                 cookie,
-                RequestBody.create(MediaType.parse("text/plain"), "155150200111104"),
-                RequestBody.create(MediaType.parse("text/plain"), "9r9haGvbJUZC8wt3"),
+                RequestBody.create(MediaType.parse("text/plain"), etUsername.getText().toString()),
+                RequestBody.create(MediaType.parse("text/plain"), etPassword.getText().toString()),
                 RequestBody.create(MediaType.parse("text/plain"), "Masuk"));
 
         call.enqueue(new Callback<String>() {
