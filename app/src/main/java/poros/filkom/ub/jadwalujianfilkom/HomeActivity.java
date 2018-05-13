@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
@@ -24,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     public static final String TAG = "hmm";
     private ArrayList<DetailJadwal> jadwals;
@@ -32,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     static String ruangan = "";
     static String prodi = "";
 
+    private BottomNavigationView bottomNavigationView;
     private RecyclerView recyclerView;
     private JadwalAdapter jadwalAdapter;
     private static ArrayList<DetailJadwal> jadwalKu =  new ArrayList<>();
@@ -43,6 +47,9 @@ public class HomeActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -237,5 +244,11 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, "fail", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Toast.makeText(this, String.valueOf(item), Toast.LENGTH_SHORT).show();
+        return true;
     }
 }
