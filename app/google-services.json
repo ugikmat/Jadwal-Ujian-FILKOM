@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "995826364055",
+    "firebase_url": "https://jadwalpikett.firebaseio.com",
+    "project_id": "jadwalpikett",
+    "storage_bucket": "jadwalpikett.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995826364055:android:cdd4b8e6cafd0a5e",
+        "android_client_info": {
+          "package_name": "poros.filkom.ub.jadwalujianfilkom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995826364055-1t1rqm4i3no8rbfj63mk85j4jc64r03k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "poros.filkom.ub.jadwalujianfilkom",
+            "certificate_hash": "c68df66ef643dfe83b0a2f2a7d2c2efa9bb224b5"
+          }
+        },
+        {
+          "client_id": "995826364055-j1o4cqslm85bmgm6sk53tk5nqq4o7vev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHRaqo-ddJHsCFFbUoIyz_RgVAX1MozJE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "995826364055-j1o4cqslm85bmgm6sk53tk5nqq4o7vev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

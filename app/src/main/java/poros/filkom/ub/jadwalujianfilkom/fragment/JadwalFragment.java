@@ -1,4 +1,4 @@
-package poros.filkom.ub.jadwalujianfilkom;
+package poros.filkom.ub.jadwalujianfilkom.fragment;
 
 
 import android.content.Context;
@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import poros.filkom.ub.jadwalujianfilkom.R;
 import poros.filkom.ub.jadwalujianfilkom.adapter.JadwalAdapter;
 import poros.filkom.ub.jadwalujianfilkom.model.Cell;
 import poros.filkom.ub.jadwalujianfilkom.model.DetailJadwal;

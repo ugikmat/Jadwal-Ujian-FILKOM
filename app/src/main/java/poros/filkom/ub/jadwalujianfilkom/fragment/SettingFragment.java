@@ -1,4 +1,4 @@
-package poros.filkom.ub.jadwalujianfilkom;
+package poros.filkom.ub.jadwalujianfilkom.fragment;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import poros.filkom.ub.jadwalujianfilkom.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FeedbackFragment extends Fragment {
+public class SettingFragment extends Fragment {
 
 
-    public FeedbackFragment() {
+    public SettingFragment() {
         // Required empty public constructor
     }
 
@@ -23,11 +25,11 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feedback, container, false);
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 
-    public static FeedbackFragment newInstance() {
-        FeedbackFragment fragment = new FeedbackFragment();
+    public static SettingFragment newInstance() {
+        SettingFragment fragment = new SettingFragment();
         return fragment;
     }
 }
