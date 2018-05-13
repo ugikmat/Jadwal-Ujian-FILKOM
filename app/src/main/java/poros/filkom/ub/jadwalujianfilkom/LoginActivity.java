@@ -2,6 +2,7 @@ package poros.filkom.ub.jadwalujianfilkom;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -128,11 +129,16 @@ public class LoginActivity extends AppCompatActivity  {
                 // get jadwal with authenticated token
                 String resp = response.body();
                 List<String> items = Arrays.asList(resp.split("<div><span class=\"label\">Program Studi<i class=\"fa fa-angle-right\"></i></span>"));
-                List<String> prodi = Arrays.asList(items.get(1).split("</div>"));
-                Log.d("zxcresp", "onResponse: "+prodi.get(0));
-                editor.putString("prodi", prodi.get(0));
-                editor.apply();
-                jadwal();
+                try {
+                    List<String> prodi = Arrays.asList(items.get(1).split("</div>"));
+                    Log.d("zxcresp", "onResponse: "+prodi.get(0));
+                    editor.putString("prodi", prodi.get(0));
+                    editor.apply();
+                    jadwal();
+                } catch (Exception e) {
+                    disableProgressBar();
+                    Toast.makeText(LoginActivity.this, "Password salah", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
