@@ -8,6 +8,6 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             tools:listitem="@layout/row_menu"
-            android:layout_height="450dp" />
+            android:layout_height="match_parent" />
 
 </FrameLayout>
