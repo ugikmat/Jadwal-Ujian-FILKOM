@@ -14,7 +14,7 @@ import poros.filkom.ub.jadwalujianfilkom.R;
  * A simple {@link Fragment} subclass.
  */
 public class SettingFragment extends Fragment {
-
+    public static String TAG= SettingFragment.class.getSimpleName();
 
     public SettingFragment() {
         // Required empty public constructor

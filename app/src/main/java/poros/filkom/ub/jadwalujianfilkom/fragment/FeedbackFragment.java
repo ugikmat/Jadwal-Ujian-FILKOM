@@ -20,14 +20,19 @@ import poros.filkom.ub.jadwalujianfilkom.model.firebase.Feedback;
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class FeedbackFragment extends Fragment {
 
+    public static String TAG= FeedbackFragment.class.getSimpleName();
 
     private EditText etName, etDescription;
     private Button btnSubmit;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference("feedback");
+
+
+
 
     public FeedbackFragment() {
         // Required empty public constructor

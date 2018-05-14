@@ -29,12 +29,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
-import static poros.filkom.ub.jadwalujianfilkom.HomeActivity.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class JadwalFragment extends Fragment {
+
+    public static String TAG= JadwalFragment.class.getSimpleName();
+
+    private String TAGS = "Hmm";
 
     private RecyclerView recyclerView;
     private JadwalAdapter jadwalAdapter;
@@ -92,12 +95,12 @@ public class JadwalFragment extends Fragment {
 
     private void getJadwalKu() {
         for (int i = 0; i < jadwalKu.size(); i++) {
-            Log.d(TAG, "getJadwalKu: ==========================");
-            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getHari());
-            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getJam());
-            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getKelas());
-            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getMatkul());
-            Log.d(TAG, "getJadwalKu: "+jadwalKu.get(i).getRuang());
+            Log.d(TAGS, "getJadwalKu: ==========================");
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getHari());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getJam());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getKelas());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getMatkul());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getRuang());
         }
         jadwalAdapter = new JadwalAdapter(getContext());
         jadwalAdapter.addItem(jadwalKu);
