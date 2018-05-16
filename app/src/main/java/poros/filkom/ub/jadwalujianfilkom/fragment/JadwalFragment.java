@@ -96,6 +96,7 @@ public class JadwalFragment extends Fragment {
         Service service = ApiGenerator.createService(Service.class);
 
         Call<JadwalResponse> call = service.getJadwalUAS();
+        jadwalKu.clear();
 
         call.enqueue(new Callback<JadwalResponse>() {
             @Override
