@@ -146,7 +146,7 @@ public class JadwalFragment extends Fragment {
                                             Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
                                             DetailJadwal detailJadwal = new DetailJadwal();
                                             detailJadwal.setHari(daftarHari[h]);
-                                            detailJadwal.setJam("pagi");
+                                            detailJadwal.setJam("08.00 - 09.30");
                                             detailJadwal.setKelas(cell.get(i+1).getContent());
                                             detailJadwal.setMatkul(cell.get(i).getContent());
                                             detailJadwal.setRuang(ruangan);
@@ -166,7 +166,12 @@ public class JadwalFragment extends Fragment {
                                             Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
                                             DetailJadwal detailJadwal = new DetailJadwal();
                                             detailJadwal.setHari(daftarHari[h]);
-                                            detailJadwal.setJam("siang");
+                                            if (daftarHari[h].equals("Jumat")) {
+
+                                                detailJadwal.setJam("09.30 - 11.00");
+                                            } else {
+                                                detailJadwal.setJam("10.00 - 11.30");
+                                            }
                                             detailJadwal.setKelas(cell.get(i+1).getContent());
                                             detailJadwal.setMatkul(cell.get(i).getContent());
                                             detailJadwal.setRuang(ruangan);
@@ -186,7 +191,7 @@ public class JadwalFragment extends Fragment {
                                             Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
                                             DetailJadwal detailJadwal = new DetailJadwal();
                                             detailJadwal.setHari(daftarHari[h]);
-                                            detailJadwal.setJam("sore");
+                                            detailJadwal.setJam("13.00 - 14.30");
                                             detailJadwal.setKelas(cell.get(i+1).getContent());
                                             detailJadwal.setMatkul(cell.get(i).getContent());
                                             detailJadwal.setRuang(ruangan);
