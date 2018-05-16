@@ -30,9 +30,6 @@ import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class JadwalFragment extends Fragment {
 
     public static String TAG= JadwalFragment.class.getSimpleName();
@@ -54,37 +51,6 @@ public class JadwalFragment extends Fragment {
     private ArrayList<DetailJadwal> jadwals;
 
     public JadwalFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragmento
-        return inflater.inflate(R.layout.fragment_jadwal, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        View v = getView();
-        Context context = getContext();
-
-
-        Intent intent = getActivity().getIntent();
-        Bundle args = intent.getBundleExtra("BUNDLE");
-        jadwals = (ArrayList<DetailJadwal>) args.getSerializable("ARRAYLIST");
-
-
-        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        jadwalAdapter = new JadwalAdapter(context);
-
-        sharedPreferences = getContext().getSharedPreferences("account", MODE_PRIVATE);
-        prodi = sharedPreferences.getString("prodi", "");
-
-        getJadwal();
     }
 
     public static JadwalFragment newInstance() {
@@ -92,19 +58,38 @@ public class JadwalFragment extends Fragment {
         return fragment;
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_jadwal, container, false);
+    }
 
-    private void getJadwalKu() {
-        for (int i = 0; i < jadwalKu.size(); i++) {
-            Log.d(TAGS, "getJadwalKu: ==========================");
-            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getHari());
-            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getJam());
-            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getKelas());
-            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getMatkul());
-            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getRuang());
-        }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        initBundle();
+        initSharedPref();
+        initRecyclerView();
+
+        getJadwal();
+    }
+
+    private void initBundle() {
+        Intent intent = getActivity().getIntent();
+        Bundle args = intent.getBundleExtra("BUNDLE");
+        jadwals = (ArrayList<DetailJadwal>) args.getSerializable("ARRAYLIST");
+    }
+
+    private void initSharedPref() {
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         jadwalAdapter = new JadwalAdapter(getContext());
-        jadwalAdapter.addItem(jadwalKu);
-        recyclerView.setAdapter(jadwalAdapter);
+    }
+
+    private void initRecyclerView() {
+        sharedPreferences = getContext().getSharedPreferences("account", MODE_PRIVATE);
+        prodi = sharedPreferences.getString("prodi", "");
     }
 
     private void getJadwal() {
@@ -118,7 +103,6 @@ public class JadwalFragment extends Fragment {
                 JadwalResponse jadwalResponse = response.body();
                 int ke = 0;
                 for (int h = 0; h < jadwalResponse.getPages().size(); h++) {
-                    //Log.d(TAG, "Hari "+h+": ========================");
                     for (int i = 1; i < jadwalResponse.getPages().get(h).getTables().get(0).getCells().size(); i++) {
                         ArrayList<Cell> cell = (ArrayList<Cell>) response.body().getPages().get(h).getTables().get(0).getCells();
                         if (cell.get(i).getI() <= 2) {
@@ -126,8 +110,6 @@ public class JadwalFragment extends Fragment {
                         } else {
                             if (cell.get(i).getJ().toString().equals("1")) {
                                 ruangan = cell.get(i).getContent();
-//                            //Log.d(TAG, "onResponse: ==============================");
-//                            //Log.d(TAG, "JA Ruangan: "+cell.get(i).getContent());
                             }
                             switch (prodi) {
                                 case "Magister Ilmu Komputer":
@@ -152,10 +134,6 @@ public class JadwalFragment extends Fragment {
 
                             switch (cell.get(i).getJ().toString()) {
                                 default:
-                                    //ruangan = cell.get(i).getContent();
-//                            case "2":
-//                                Log.d(TAG, "JA Prodi: "+cell.get(i).getContent());
-//                                break;
                                 case "3":
                                     for (int j = 0; j < jadwals.size(); j++) {
                                         if (
@@ -176,24 +154,7 @@ public class JadwalFragment extends Fragment {
                                         }
                                     }
                                     break;
-//                            case "4":
-//                                Log.d(TAG, "JA kelas: "+cell.get(i).getContent());
-//                                break;
-//                            case "5":
-//                                Log.d(TAG, "JA Prodi: "+cell.get(i).getContent());
-//                                break;
                                 case "6":
-                                    // 6 = matkul, 7 = kelas
-                                    //int cases = 7;
-
-//                                    Log.d(TAG, "onResponse: ------------------------------");
-//                                                                            Log.d(TAG, "JA siam : "+jadwals.get(j).getMatkul());
-//                                        Log.d(TAG, "JA siamk: "+jadwals.get(j).getKelas());
-//                                    Log.d(TAG, "onResponse: 99999999999999999");
-                                    //        Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
-                                    //Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
-//                                    Log.d(TAG, "onResponse: ------------------------------");
-
                                     for (int j = 0; j < jadwals.size(); j++) {
                                         if (
                                                 prodi.equals(cell.get(i-1).getContent().trim()) &&
@@ -213,16 +174,7 @@ public class JadwalFragment extends Fragment {
                                         }
                                     }
                                     break;
-//                            case "7":
-//                                Log.d(TAG, "JA kelas: "+cell.get(i).getContent());
-//                                break;
-//                            case "8":
-//                                Log.d(TAG, "JA Prodi: "+cell.get(i).getContent());
-
-
-//                                break;
                                 case "9":
-                                    //Log.d(TAG, "JA Matkul: "+cell.get(i).getContent());
                                     for (int j = 0; j < jadwals.size(); j++) {
                                         if (
                                                 prodi.equals(cell.get(i-1).getContent().trim()) &&
@@ -242,18 +194,8 @@ public class JadwalFragment extends Fragment {
                                         }
                                     }
                                     break;
-//                            case "10":
-//                                Log.d(TAG, "JA Kelas: "+cell.get(i).getContent());
-//                                break;
                             }
                         }
-
-//                    if (cell.get(i).getJ().equals("3") || cell.get(i).getJ().equals("6") || cell.get(i).getJ().equals("9")) {
-//                    }
-//                    if (cell.get(i).getJ().equals("4")) {
-//                        Log.d(TAG, "JA kelas: "+cell.get(i).getContent());
-//                    }
-                        //Log.d("zxcv", "onResponse: " + response.body().getPages().get(0).getTables().get(0).getCells().get(i).getContent());
                     }
 
                 }
@@ -266,5 +208,20 @@ public class JadwalFragment extends Fragment {
                 Toast.makeText(getContext(), "fail", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    private void getJadwalKu() {
+        for (int i = 0; i < jadwalKu.size(); i++) {
+            Log.d(TAGS, "getJadwalKu: ==========================");
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getHari());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getJam());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getKelas());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getMatkul());
+            Log.d(TAGS, "getJadwalKu: "+jadwalKu.get(i).getRuang());
+        }
+        jadwalAdapter = new JadwalAdapter(getContext());
+        jadwalAdapter.addItem(jadwalKu);
+        recyclerView.setAdapter(jadwalAdapter);
     }
 }
