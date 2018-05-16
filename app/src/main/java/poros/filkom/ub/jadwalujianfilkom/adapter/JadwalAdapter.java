@@ -48,9 +48,10 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.ViewHolder
         holder.tvMatkul.setText(jadwalku.get(position).getMatkul());
         holder.tvJam.setText(jadwalku.get(position).getJam());
         holder.tvRuang.setText(jadwalku.get(position).getRuang());
-        holder.btnDetail.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(context, "Detail jadwal", Toast.LENGTH_SHORT).show();
             }
         });
@@ -74,7 +75,6 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.ViewHolder
             tvKelas = (TextView) itemView.findViewById(R.id.tv_kelas);
             tvMatkul = (TextView) itemView.findViewById(R.id.tv_matkul);
             tvRuang = (TextView) itemView.findViewById(R.id.tv_ruang);
-            btnDetail = (Button) itemView.findViewById(R.id.btn_detail);
         }
     }
 }
