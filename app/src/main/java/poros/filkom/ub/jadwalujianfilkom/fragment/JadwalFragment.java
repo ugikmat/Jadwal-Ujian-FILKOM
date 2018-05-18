@@ -48,7 +48,7 @@ public class JadwalFragment extends Fragment {
     SharedPreferences.Editor editor;
 
 
-    private ArrayList<DetailJadwal> jadwals;
+    private static ArrayList<DetailJadwal> jadwals;
 
     public JadwalFragment() {
     }
