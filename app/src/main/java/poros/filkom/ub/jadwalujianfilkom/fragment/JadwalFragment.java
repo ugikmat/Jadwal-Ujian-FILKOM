@@ -141,7 +141,6 @@ public class JadwalFragment extends Fragment {
                             }
 
                             switch (cell.get(i).getJ().toString()) {
-                                default:
                                 case "3":
                                     for (int j = 0; j < jadwals.size(); j++) {
                                         if (
