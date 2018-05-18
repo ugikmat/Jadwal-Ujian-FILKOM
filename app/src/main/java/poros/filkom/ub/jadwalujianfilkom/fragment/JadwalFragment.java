@@ -158,6 +158,8 @@ public class JadwalFragment extends Fragment {
                                             detailJadwal.setRuang(ruangan);
                                             jadwalKu.add(ke, detailJadwal);
                                             ke++;
+                                            //remove data master after add to jadwalku
+                                            jadwals.get(j).setMatkul("done"+jadwals.get(j).getMatkul());
                                         }
                                     }
                                     break;
@@ -183,6 +185,8 @@ public class JadwalFragment extends Fragment {
                                             detailJadwal.setRuang(ruangan);
                                             jadwalKu.add(ke, detailJadwal);
                                             ke++;
+                                            //remove data master after add to jadwalku
+                                            jadwals.get(j).setMatkul("done"+jadwals.get(j).getMatkul());
                                         }
                                     }
                                     break;
@@ -203,6 +207,8 @@ public class JadwalFragment extends Fragment {
                                             detailJadwal.setRuang(ruangan);
                                             jadwalKu.add(ke, detailJadwal);
                                             ke++;
+                                            //remove data master after add to jadwalku
+                                            jadwals.get(j).setMatkul("done"+jadwals.get(j).getMatkul());
                                         }
                                     }
                                     break;
