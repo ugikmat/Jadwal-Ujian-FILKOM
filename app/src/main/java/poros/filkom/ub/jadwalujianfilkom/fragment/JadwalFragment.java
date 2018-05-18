@@ -59,6 +59,13 @@ public class JadwalFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        jadwalAdapter = new JadwalAdapter(getContext());
+        getJadwal();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_jadwal, container, false);
@@ -72,7 +79,7 @@ public class JadwalFragment extends Fragment {
         initSharedPref();
         initRecyclerView();
 
-        getJadwal();
+        getJadwalKu();
     }
 
     private void initBundle() {
@@ -205,8 +212,8 @@ public class JadwalFragment extends Fragment {
                     }
 
                 }
+                jadwalAdapter.notifyDataSetChanged();
 
-                getJadwalKu();
             }
 
             @Override
