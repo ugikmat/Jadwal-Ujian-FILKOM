@@ -42,7 +42,7 @@ public class JadwalFragment extends Fragment {
 
     static String ruangan = "";
     static String prodi = "";
-    private String[] daftarHari = {"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Senin", "Rabu", "Kamis"};
+    private String[] daftarHari = {"Senin, 21 Mei", "Selasa, 22 Mei", "Rabu, 23 Mei", "Kamis, 24 Mei", "Jumat, 25 Mei", "Sabtu, 26 Mei", "Senin, 28 Mei", "Rabu, 30 Mei", "Kamis, 31 Mei"};
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
