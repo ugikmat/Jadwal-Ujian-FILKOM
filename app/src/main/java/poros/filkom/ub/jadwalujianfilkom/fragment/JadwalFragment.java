@@ -39,6 +39,7 @@ public class JadwalFragment extends Fragment {
     private RecyclerView recyclerView;
     private JadwalAdapter jadwalAdapter;
     private static ArrayList<DetailJadwal> jadwalKu =  new ArrayList<>();
+    private static ArrayList<String> jadwalDouble = new ArrayList<>();
 
     static String ruangan = "";
     static String prodi = "";
@@ -142,8 +143,16 @@ public class JadwalFragment extends Fragment {
 
                             switch (cell.get(i).getJ().toString()) {
                                 case "3":
+                                    jadwalDouble.clear();
                                     for (int j = 0; j < jadwals.size(); j++) {
-                                        if (
+                                        jadwalDouble.add(jadwals.get(j).getMatkul().trim());
+                                        int count = 0;
+                                        for (int z = 0; z < jadwalDouble.size(); z++) {
+                                            if (jadwalDouble.get(z).equals(cell.get(i).getContent().trim())) {
+                                                count++;
+                                            }
+                                        }
+                                        if ( count <= 1 &&
                                                 prodi.equals(cell.get(i-1).getContent().trim()) &&
                                                         jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
                                                         jadwals.get(j).getKelas().trim().equals(cell.get(i+1).getContent().trim())) {
@@ -158,14 +167,20 @@ public class JadwalFragment extends Fragment {
                                             detailJadwal.setRuang(ruangan);
                                             jadwalKu.add(ke, detailJadwal);
                                             ke++;
-                                            //remove data master after add to jadwalku
-                                            jadwals.get(j).setMatkul("done"+jadwals.get(j).getMatkul());
                                         }
                                     }
                                     break;
                                 case "6":
+                                    jadwalDouble.clear();
                                     for (int j = 0; j < jadwals.size(); j++) {
-                                        if (
+                                        jadwalDouble.add(jadwals.get(j).getMatkul().trim());
+                                        int count = 0;
+                                        for (int z = 0; z < jadwalDouble.size(); z++) {
+                                            if (jadwalDouble.get(z).equals(cell.get(i).getContent().trim())) {
+                                                count++;
+                                            }
+                                        }
+                                        if ( count <= 1 &&
                                                 prodi.equals(cell.get(i-1).getContent().trim()) &&
                                                         jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
                                                         jadwals.get(j).getKelas().trim().equals(cell.get(i+1).getContent().trim())) {
@@ -185,14 +200,20 @@ public class JadwalFragment extends Fragment {
                                             detailJadwal.setRuang(ruangan);
                                             jadwalKu.add(ke, detailJadwal);
                                             ke++;
-                                            //remove data master after add to jadwalku
-                                            jadwals.get(j).setMatkul("done"+jadwals.get(j).getMatkul());
                                         }
                                     }
                                     break;
                                 case "9":
+                                    jadwalDouble.clear();
                                     for (int j = 0; j < jadwals.size(); j++) {
-                                        if (
+                                        jadwalDouble.add(jadwals.get(j).getMatkul().trim());
+                                        int count = 0;
+                                        for (int z = 0; z < jadwalDouble.size(); z++) {
+                                            if (jadwalDouble.get(z).equals(cell.get(i).getContent().trim())) {
+                                                count++;
+                                            }
+                                        }
+                                        if ( count <= 1 &&
                                                 prodi.equals(cell.get(i-1).getContent().trim()) &&
                                                         jadwals.get(j).getMatkul().trim().equals(cell.get(i).getContent().trim()) &&
                                                         jadwals.get(j).getKelas().trim().equals(cell.get(i+1).getContent().trim())) {
@@ -207,8 +228,6 @@ public class JadwalFragment extends Fragment {
                                             detailJadwal.setRuang(ruangan);
                                             jadwalKu.add(ke, detailJadwal);
                                             ke++;
-                                            //remove data master after add to jadwalku
-                                            jadwals.get(j).setMatkul("done"+jadwals.get(j).getMatkul());
                                         }
                                     }
                                     break;
