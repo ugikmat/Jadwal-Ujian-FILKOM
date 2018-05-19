@@ -88,14 +88,12 @@ public class FeedbackFragment extends Fragment {
 
         @Override
         protected String doInBackground(String... params) {
-            for (int i = 0; i < 5; i++) {
-                try {
-                    Thread.sleep(1000);
-                    Feedback feedback = new Feedback(etName.getText().toString(), etDescription.getText().toString());
-                    ref.child(ref.push().getKey()).setValue(feedback);
-                } catch (InterruptedException e) {
-                    Thread.interrupted();
-                }
+            try {
+                Thread.sleep(1000);
+                Feedback feedback = new Feedback(etName.getText().toString(), etDescription.getText().toString());
+                ref.child(ref.push().getKey()).setValue(feedback);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             return "Executed";
         }

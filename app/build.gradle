@@ -10,8 +10,8 @@ android {
         applicationId "poros.filkom.ub.jadwalujianfilkom"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 2
-        versionName "1.02"
+        versionCode 3
+        versionName "1.03"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
