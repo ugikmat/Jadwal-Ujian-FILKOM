@@ -106,7 +106,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.ViewHolder
         builder.setNumber(101);
         builder.setContentIntent(pendingIntent);
         builder.setTicker("Kuy belajar");
-        builder.setSmallIcon(R.drawable.ic_home_black_24dp);
+        builder.setSmallIcon(R.drawable.ic_poros);
         //builder.setLargeIcon(bm);
         builder.setAutoCancel(true);
         builder.setPriority(0);
