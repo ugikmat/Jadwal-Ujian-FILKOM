@@ -189,8 +189,7 @@ public class JadwalFragment extends Fragment {
                                             Log.d(TAG, "JA kelas: "+cell.get(i+1).getContent());
                                             DetailJadwal detailJadwal = new DetailJadwal();
                                             detailJadwal.setHari(daftarHari[h]);
-                                            if (daftarHari[h].equals("Jumat")) {
-
+                                            if (daftarHari[h].equals("Jumat, 25 Mei")) {
                                                 detailJadwal.setJam("09.30 - 11.00");
                                             } else {
                                                 detailJadwal.setJam("10.00 - 11.30");
