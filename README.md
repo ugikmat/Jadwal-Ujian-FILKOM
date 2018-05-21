@@ -15,3 +15,6 @@ Aplikasi sederhana untuk mendapatkan jadwal ujian di FILKOM sesuai mata kuliah y
 - Notifikasi ruang kelas sebelum UAS
 - Export jadwal UAS to google calendar
 
+# Install from F-Droid
+[F-Droid](https://timeline.line.me/post/_dcDuO8u3jRvTS7PzcaMFpOCvRU_U033OWlcdNOo/1152669929803022848)
+[Add POROS Mobile repo to F-Droid](https://timeline.line.me/post/_dcDuO8u3jRvTS7PzcaMFpOCvRU_U033OWlcdNOo/1152671481703027032)
